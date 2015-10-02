@@ -3,13 +3,13 @@
 "setTimeout","60000",""
 #Open the supplier test central page
 "open","/Supplier.aw/ad/testCentral",""
-#Create Supplier
+#Create Supplier Account
 "clickAndWait","[@awname='createTestSupplier::TestCategoryLinks:testUnitClick']",""
 "type","[@awname='class=ariba.network.service.common.anappsbusinesslogic.testutils.TestUserAccountInfo_userId_field=userId::MetaForm:refreshCurrentPage']","selsup_DV_N_sup_@s.c"
 "click","[@awname='class=ariba.network.service.common.anappsbusinesslogic.testutils.TestUserAccountInfo_autoAcceptTOU_field=autoAcceptTOU::MetaForm:refreshCurrentPage']",""
 "click","[@awname='TestStagerForm:runStager']",""
 "waitForPageToLoad","360000",""
-#Create Buyer 1
+#Create Buyer Account 1
 "clickAndWait","[@awname='createTestBuyer::TestCategoryLinks:testUnitClick']",""
 "type","[@awname='class=ariba.network.service.common.anappsbusinesslogic.testutils.TestUserAccountInfo_userId_field=userId::MetaForm:refreshCurrentPage']","selbuy_DV_N_buy_@b.c"
 "click","[@awname='class=ariba.network.service.common.anappsbusinesslogic.testutils.TestUserAccountInfo_autoAcceptTOU_field=autoAcceptTOU::MetaForm:refreshCurrentPage']",""
@@ -17,11 +17,11 @@
 "waitForPageToLoad","360000",""
 #Create Relationship
 "clickAndWait","[@awname='createSupplierBuyerRelationship::TestCategoryLinks:testUnitClick']",""
-#wait for supplier / buyer to replicate 
+#wait for supplier / buyer to replicate
 "clickAndWait","[@awname='waitForSupplierToReplicate::TestCategoryLinks:testUnitClick']",""
 "clickAndWait","[@awname='waitForBuyerToReplicate::TestCategoryLinks:testUnitClick']",""
 "clickAndWait","[@awname='waitForRelationshipToReplicate::TestCategoryLinks:testUnitClick']",""
-#Create Buyer 2
+#Create Buyer Account 2
 "clickAndWait","[@awname='createTestBuyer::TestCategoryLinks:testUnitClick']",""
 "type","[@awname='class=ariba.network.service.common.anappsbusinesslogic.testutils.TestUserAccountInfo_userId_field=userId::MetaForm:refreshCurrentPage']","selbuy2_DV_N_buy_@b.c"
 "click","[@awname='class=ariba.network.service.common.anappsbusinesslogic.testutils.TestUserAccountInfo_autoAcceptTOU_field=autoAcceptTOU::MetaForm:refreshCurrentPage']",""
@@ -29,7 +29,7 @@
 "waitForPageToLoad","360000",""
 #Create Relationship
 "clickAndWait","[@awname='createSupplierBuyerRelationship::TestCategoryLinks:testUnitClick']",""
-#wait for supplier / buyer to replicate 
+#wait for supplier / buyer to replicate
 "clickAndWait","[@awname='waitForSupplierToReplicate::TestCategoryLinks:testUnitClick']",""
 "clickAndWait","[@awname='waitForBuyerToReplicate::TestCategoryLinks:testUnitClick']",""
 "clickAndWait","[@awname='waitForRelationshipToReplicate::TestCategoryLinks:testUnitClick']",""
