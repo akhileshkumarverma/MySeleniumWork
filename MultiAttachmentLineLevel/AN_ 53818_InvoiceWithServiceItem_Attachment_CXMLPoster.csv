@@ -3,13 +3,13 @@
 "setTimeout","60000",""
 #Open the supplier test central page
 "open","/Supplier.aw/ad/testCentral",""
-#Create Supplier
+#Create Supplier Account
 "clickAndWait","[@awname='createTestSupplier::TestCategoryLinks:testUnitClick']",""
 "type","[@awname='class=ariba.network.service.common.anappsbusinesslogic.testutils.TestUserAccountInfo_userId_field=userId::MetaForm:refreshCurrentPage']","selsup_DV_N_sup_@s.c"
 "click","[@awname='class=ariba.network.service.common.anappsbusinesslogic.testutils.TestUserAccountInfo_autoAcceptTOU_field=autoAcceptTOU::MetaForm:refreshCurrentPage']",""
 "click","[@awname='TestStagerForm:runStager']",""
 "waitForPageToLoad","360000",""
-#Create Buyer
+#Create Buyer Account
 "clickAndWait","[@awname='createTestBuyer::TestCategoryLinks:testUnitClick']",""
 "type","[@awname='class=ariba.network.service.common.anappsbusinesslogic.testutils.TestUserAccountInfo_userId_field=userId::MetaForm:refreshCurrentPage']","selbuy_DV_N_buy_@b.c"
 "click","[@awname='class=ariba.network.service.common.anappsbusinesslogic.testutils.TestUserAccountInfo_autoAcceptTOU_field=autoAcceptTOU::MetaForm:refreshCurrentPage']",""
