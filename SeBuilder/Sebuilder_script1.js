@@ -15,11 +15,19 @@
       }
     },
     {
+      "type": "verifyTextPresent",
+      "text": "Selenium Projects"
+    },
+    {
       "type": "clickElement",
       "locator": {
         "type": "link text",
         "value": "Download"
       }
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Downloads"
     },
     {
       "type": "clickElement",
@@ -29,6 +37,10 @@
       }
     },
     {
+      "type": "verifyTextPresent",
+      "text": "Selenium Documentation¶"
+    },
+    {
       "type": "clickElement",
       "locator": {
         "type": "link text",
@@ -36,11 +48,19 @@
       }
     },
     {
+      "type": "verifyTextPresent",
+      "text": "Getting Help"
+    },
+    {
       "type": "clickElement",
       "locator": {
         "type": "link text",
         "value": "About"
       }
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "About Selenium"
     }
   ],
   "data": {
