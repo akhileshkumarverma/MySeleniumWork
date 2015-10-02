@@ -1,0 +1,84 @@
+#Test ID: AN_53646_InvoicewithServiceItem_AttachmentHeaderLevel
+#Test Description: AN_53646_InvoicewithServiceItem_AttachmentHeaderLevel
+"setTimeout","60000",""
+#Open the supplier test central page
+"open","/Supplier.aw/ad/testCentral",""
+#Create Supplier
+"clickAndWait","[@awname='createTestSupplier::TestCategoryLinks:testUnitClick']",""
+"type","[@awname='class=ariba.network.service.common.anappsbusinesslogic.testutils.TestUserAccountInfo_userId_field=userId::MetaForm:refreshCurrentPage']","selsup_DV_N_sup_@s.c"
+"click","[@awname='class=ariba.network.service.common.anappsbusinesslogic.testutils.TestUserAccountInfo_autoAcceptTOU_field=autoAcceptTOU::MetaForm:refreshCurrentPage']",""
+"click","[@awname='TestStagerForm:runStager']",""
+"waitForPageToLoad","360000",""
+#Create Buyer
+"clickAndWait","[@awname='createTestBuyer::TestCategoryLinks:testUnitClick']",""
+"type","[@awname='class=ariba.network.service.common.anappsbusinesslogic.testutils.TestUserAccountInfo_userId_field=userId::MetaForm:refreshCurrentPage']","selbuy_DV_N_buy_@b.c"
+"click","[@awname='class=ariba.network.service.common.anappsbusinesslogic.testutils.TestUserAccountInfo_autoAcceptTOU_field=autoAcceptTOU::MetaForm:refreshCurrentPage']",""
+"click","[@awname='TestStagerForm:runStager']",""
+"waitForPageToLoad","360000",""
+#Create Relationship
+"clickAndWait","[@awname='createSupplierBuyerRelationship::TestCategoryLinks:testUnitClick']",""
+#wait for supplier / buyer to replicate 
+"clickAndWait","[@awname='waitForSupplierToReplicate::TestCategoryLinks:testUnitClick']",""
+"clickAndWait","[@awname='waitForBuyerToReplicate::TestCategoryLinks:testUnitClick']",""
+"clickAndWait","[@awname='waitForRelationshipToReplicate::TestCategoryLinks:testUnitClick']",""
+#Setting Buyer As context
+"click","[@awname='TestPane:PopupMenuLink']",""
+"clickAndWait","[@awname='TestPane:TestCentralASN_Buyer']",""
+"type","[@awname='ANTestUserManager:newUsername']","selbuy_DV_N_buy_@b.c"
+"clickAndWait","[@awname='ANTestUserManager:changeUser']",""
+#Navigating To Buyer Home page
+#Setting Rule "Required attachment for Invoice with service item"
+"clickAndWait","[@awname='buyerHomePage::TestCategoryLinks:testUnitClick']",""
+"clickAndWait","[@awname='AribaAction:preferences:actionClicked']",""
+"clickAndWait","[@awname='buyerConfig_Transactions']",""
+"clickAndWait","[@awname='CBInvoiceRuleSetup:checkboxClicked']",""
+"clickAndWait","[@awname='CBInvoiceSetup:checkboxClicked']",""
+"click","[@awname='CBInvoiceRuleSetup:requireSvcInvAttachments']",""
+"clickAndWait","[@awname='ModalPageWrapper:okClicked_1']",""
+"clickAndWait","[@awname='ModalPageWrapper:okClicked']",""
+#set the supplier to the test context
+"click","[@awname='TestPane:PopupMenuLink']",""
+"clickAndWait","[@awname='TestPane:TestCentralASN_Supplier']",""
+"type","[@awname='ANTestUserManager:newUsername']","selsup_DV_N_sup_@s.c"
+"clickAndWait","[@awname='ANTestUserManager:changeUser']",""
+#Run Create service PO
+"clickAndWait","[@awname='createPO::TestCategoryLinks:testUnitClick']",""
+"type","[@awname='class=ariba.network.service.apps.supplier.testutils.POStagerParameter_NumberOfLineItems_field=NumberOfLineItems::MetaForm:refreshCurrentPage']","3"
+"type","[@awname='class=ariba.network.service.apps.supplier.testutils.POStagerParameter_Quantity_field=Quantity::MetaForm:refreshCurrentPage']","2"
+"type","[@awname='class=ariba.network.service.apps.supplier.testutils.POStagerParameter_buyerUserId_field=buyerUserId::MetaForm:refreshCurrentPage']","selbuy_DV_N_buy_@b.c"
+"select","[@awname='class=ariba.network.service.apps.supplier.testutils.POStagerParameter_poType_field=poType::MetaForm:list']","label=General Service"
+"clickAndWait","[@awname='TestStagerForm:runStager']",""
+"clickAndWait","[@awname='waitForProcessedDocument::TestCategoryLinks:testUnitClick']",""
+#Go to PO details page
+"clickAndWait","[@awname='showDocumentUI::TestCategoryLinks:testUnitClick']",""
+#Adding Attachment At Header level for multiple line item
+"click","[@awname='INSPOActions:refreshCurrentPage_1']",""
+"clickAndWait","[@awname='INSPOActions:standardInvoiceClicked']",""
+"type","[@awname='___INTERNAL_Invoice Header Quick Entry____INTERNAL_Invoice Header Summary Row____INTERNAL_SummaryFields____INTERNAL_InvoiceRemitToBillTo____INTERNAL_Invoice Header Common____INTERNAL_orderInfo_InvoiceDetailRequestHeader.invoiceID::InvoiceDetailRequestHeader.invoiceID']","INV_DV_N_foo_"
+"type","[@awname='___INTERNAL_Invoice Header Quick Entry____INTERNAL_Invoice Header Tax_InvoiceDetailSummary.Tax_TaxDetail____INTERNAL_TaxDetail____INTERNAL_TaxDetailAction____INTERNAL_TaxDetailColumn2_percentageRate::percentageRate']","2"
+"click","[@awname='___INTERNAL_InvoiceHeaderTableActions::NCFGroupView:refreshCurrentPage']",""
+"clickAndWait","[@awname='___INTERNAL_InvoiceHeaderTableActions_____INTERNALACTION_$[StandardInvoiceHeader/a069]Attachment::Attachment:clicked']",""
+"typefilename","[@awname='___INTERNAL_Invoice Header Quick Entry____INTERNAL_Invoice Header Attachment_____INTERNALAW_attachment::AWFileUploadInternals']","testData/LineAttachment.txt"
+"clickAndWait","[@awname='___INTERNAL_Invoice Header Quick Entry____INTERNAL_Invoice Header Attachment_____INTERNALAW_attachment::INSGenerateLineAttachment:addAttachmentClicked']",""
+"clickAndWait","[@awname='next::WizardNavigator:actionClicked_1']",""
+"assertText","//form[@id='_upwdnd']/table/tbody/tr[2]/td/div/div/table[3]/tbody/tr[3]/td/table/tbody/tr[2]/td","LineAttachment.txt"
+"clickAndWait","[@awname='submit::WizardNavigator:actionClicked']",""
+#Validation For Sent Status for Invoice
+"click","[@awname='TestPane:PopupMenuLink']",""
+"clickAndWait","[@awname='TestPane:TestCentral_']",""
+"clickAndWait","[@awname='waitForProcessedDocument::TestCategoryLinks:testUnitClick']",""
+#Invoice Sent validation
+"click","[@awname='TestPane:PopupMenuLink']",""
+"clickAndWait","[@awname='TestPane:testValidation']",""
+"type","[@awname='AUTOMATION_VALIDATION_ENTRY_STRING']","{""validationMethod"":""ariba.network.service.apps.supplier.testutils.FWTest,inspectDoc,ariba.network.service.common.antxnbusinesslogic.ANCXMLDocument,ariba.network.service.common.antxnbusinesslogic.ANCXMLDocument"",""validationParameters"":""{\""validationParameters\"":[{\""validateOrder\"":false,\""name\"":\""documentType\"",\""value\"":\""InvoiceDetailRequest\"",\""list\"":false,\""objectList\"":false,\""key\"":\""documentType\""},{\""validateOrder\"":false,\""name\"":\""documentStatus\"",\""value\"":\""<null>\"",\""list\"":false,\""objectList\"":false,\""key\"":\""documentStatus\""},{\""validateOrder\"":false,\""name\"":\""status\"",\""value\"":\""Sent\"",\""list\"":false,\""objectList\"":false,\""key\"":\""status\""},{\""validateOrder\"":false,\""name\"":\""amountAmount\"",\""value\"":\""<null>\"",\""list\"":false,\""objectList\"":false,\""key\"":\""amountAmount\""},{\""validateOrder\"":false,\""name\"":\""amountCurrency\"",\""value\"":\""<null>\"",\""list\"":false,\""objectList\"":false,\""key\"":\""amountCurrency\""},{\""validateOrder\"":false,\""name\"":\""dashboardStatus\"",\""value\"":\""INVOICE_SENT\"",\""list\"":false,\""objectList\"":false,\""key\"":\""dashboardStatus\""}]}""}"
+"clickAndWait","[@awname='AUTOMATION_COMPARE_VALIDATION']",""
+"clickAndWait","[@awname='AUTOMATION_VALIDATION_SUCCESS']",""
+"clickAndWait","[@awname='showDocumentUI::TestCategoryLinks:testUnitClick']",""
+"assertText","[@awname='ANXDataTable:currentColumn.xml.action']","LineAttachment.txt"
+#Validation for invoice attachment from buyer side
+"click","[@awname='TestPane:PopupMenuLink']",""
+"clickAndWait","[@awname='TestPane:TestCentralASN_Buyer']",""
+"type","[@awname='ANTestUserManager:newUsername']","selbuy_DV_N_buy_@b.c"
+"clickAndWait","[@awname='ANTestUserManager:changeUser']",""
+"clickAndWait","[@awname='showDocumentUI::TestCategoryLinks:testUnitClick']",""
+"assertText","[@awname='ANXDataTable:currentColumn.xml.action']","LineAttachment.txt"
