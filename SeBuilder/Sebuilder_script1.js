@@ -38,7 +38,7 @@
     },
     {
       "type": "verifyTextPresent",
-      "text": "Selenium Documentation¶"
+      "text": "Selenium Documentation"
     },
     {
       "type": "clickElement",
