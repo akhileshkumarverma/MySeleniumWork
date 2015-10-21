@@ -23,6 +23,80 @@
       }
     },
     {
+      "type": "verifyTextPresent",
+      "text": "Inbox"
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Outbox"
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Catalogs"
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Reports"
+    },
+    {
+      "type": "clickElement",
+      "locator": {
+        "type": "id",
+        "value": "_bz83db"
+      }
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Orders and Releases"
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Time & Expense Sheets"
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Early Payments"
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Scheduled Payments"
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Remittances"
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Inquiries"
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Notifications"
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "More..."
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Items to Ship"
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "None found in the date range"
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Search Filters"
+    },
+    {
+      "type": "clickElement",
+      "locator": {
+        "type": "css selector",
+        "value": "#_bemqud > img"
+      }
+    },
+    {
       "type": "clickElement",
       "locator": {
         "type": "link text",
